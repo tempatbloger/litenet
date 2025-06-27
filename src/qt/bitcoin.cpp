@@ -549,9 +549,9 @@ int GuiMain(int argc, char* argv[])
     /// 3. Application identification
     // must be set before OptionsModel is initialized or translations are loaded,
     // as it is used to locate QSettings
-    QApplication::setOrganizationName(QAPP_ORG_NAME);
+    QApplication::setOrganizationName(LiteNet);
     QApplication::setOrganizationDomain(QAPP_ORG_DOMAIN);
-    QApplication::setApplicationName(QAPP_APP_NAME_DEFAULT);
+    QApplication::setApplicationName(LiteNet-Qt);
 
     /// 4. Initialization of translations, so that intro dialog is in user's language
     // Now that QSettings are accessible, initialize translations
