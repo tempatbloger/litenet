@@ -1,16 +1,16 @@
 # It is not recommended to modify this file in-place, because it will
 # be overwritten during package upgrades. If you want to add further
 # options or overwrite existing ones then use
-# $ systemctl edit blackmored.service
+# $ systemctl edit litenetd.service
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/blackmore/blackmore.conf, but keep in mind those explicitly
+# /etc/LiteNet/LiteNet.conf, but keep in mind those explicitly
 # specified as arguments in ExecStart= will override those in the
 # config file.
 
 [Unit]
-Description=Blackcoin daemon
+Description=LiteNet daemon
 Documentation=https://github.com/CoinBlack/blackcoin-more/blob/master/doc/init.md
 
 # https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
@@ -18,22 +18,22 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/blackmored -pid=/run/blackmored/blackmored.pid \
-                            -conf=/etc/blackmore/blackmore.conf \
-                            -datadir=/var/lib/blackmored \
+ExecStart=/usr/bin/litenetd -pid=/run/litenetd/litenetd.pid \
+                            -conf=/etc/LiteNet/LiteNet.conf \
+                            -datadir=/var/lib/litenetd \
                             -startupnotify='systemd-notify --ready' \
                             -shutdownnotify='systemd-notify --stopping'
 
 # Make sure the config directory is readable by the service user
 PermissionsStartOnly=true
-ExecStartPre=/bin/chgrp blackcoin /etc/blackmore
+ExecStartPre=/bin/chgrp blackcoin /etc/LiteNet
 
 # Process management
 ####################
 
 Type=notify
 NotifyAccess=all
-PIDFile=/run/blackmored/blackmored.pid
+PIDFile=/run/litenetd/litenetd.pid
 
 Restart=on-failure
 TimeoutStartSec=infinity
@@ -46,16 +46,16 @@ TimeoutStopSec=600
 User=blackcoin
 Group=blackcoin
 
-# /run/blackmored
-RuntimeDirectory=blackmored
+# /run/litenetd
+RuntimeDirectory=litenetd
 RuntimeDirectoryMode=0710
 
-# /etc/blackmore
-ConfigurationDirectory=blackmore
+# /etc/LiteNet
+ConfigurationDirectory=LiteNet
 ConfigurationDirectoryMode=0710
 
-# /var/lib/blackmored
-StateDirectory=blackmored
+# /var/lib/litenetd
+StateDirectory=litenetd
 StateDirectoryMode=0710
 
 # Hardening measures
