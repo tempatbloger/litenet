@@ -1,11 +1,11 @@
 .PHONY: FORCE
 all: FORCE
-	$(MAKE) -C .. blackmore_qt test_blackmore_qt
+	$(MAKE) -C .. litenet_qt test_litenet_qt
 clean: FORCE
-	$(MAKE) -C .. blackmore_qt_clean test_blackmore_qt_clean
+	$(MAKE) -C .. litenet_qt_clean test_litenet_qt_clean
 check: FORCE
-	$(MAKE) -C .. test_blackmore_qt_check
-blackmore-qt blackmore-qt.exe: FORCE
-	 $(MAKE) -C .. blackmore_qt
+	$(MAKE) -C .. test_litenet_qt_check
+litenet-qt litenet-qt.exe: FORCE
+	 $(MAKE) -C .. litenet_qt
 apk: FORCE
-	$(MAKE) -C .. blackmore_qt_apk
+	$(MAKE) -C .. litenet_qt_apk
