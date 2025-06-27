@@ -134,11 +134,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x70;
-        pchMessageStart[1] = 0x35;
-        pchMessageStart[2] = 0x22;
-        pchMessageStart[3] = 0x05;
-        nDefaultPort = 15714;
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xbf;
+        pchMessageStart[2] = 0xb5;
+        pchMessageStart[3] = 0xda;
+        nDefaultPort = 13333; // LiteNet mainnet port
         m_assumed_blockchain_size = 20;
 
         genesis = CreateGenesisBlock(1393221600, 164482, 0x1e0fffff, 1, 0);
@@ -151,10 +151,8 @@ public:
         // This is fine at runtime as we'll fall back to using them as an addrfetch if they don't support the
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
-        vSeeds.emplace_back("dnsseed.blackcoin.nl"); // hosted by blackcoin.nl
-        vSeeds.emplace_back("dnsseed2.blackcoin.nl"); // hosted by blackcoin.nl
-        vSeeds.emplace_back("electrum2.blackcoin.nl"); // hosted by blackcoin.nl
-        vSeeds.emplace_back("electrum3.blackcoin.nl");  // hosted by blackcoin.nl
+        vSeeds.emplace_back("seed.litenet.asbnetwork.my.id"); // seed node LiteNet
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
@@ -162,7 +160,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        bech32_hrp = "blk";
+        bech32_hrp = "ltn";
 
         vFixedSeeds = std::vector<uint8_t>(std::begin(chainparams_seed_main), std::end(chainparams_seed_main));
 
@@ -170,16 +168,7 @@ public:
         m_is_mockable_chain = false;
 
         checkpointData = {
-            {
-                {   5001, uint256S("0x2fac9021be0c311e7b6dc0933a72047c70f817e2eb1e01bede011193ad1b28bc")}, // hardfork
-                {  10000, uint256S("0x0000000000827e4dc601f7310a91c45af8df0dfc1b6fa1dfa5b896cb00c8767c")}, // last pow block
-                {  38425, uint256S("0x62bf2e9701226d2f88d9fa99d650bd81f3faf2e56f305b7d71ccd1e7aa9c3075")}, // hardfork
-                { 254348, uint256S("0x9bf8d9bd757d3ef23d5906d70567e5f0da93f1e0376588c8d421a95e2421838b")}, // minor network split
-                { 319002, uint256S("0x0011494d03b2cdf1ecfc8b0818f1e0ef7ee1d9e9b3d1279c10d35456bc3899ef")}, // hardfork
-                { 872456, uint256S("0xe4fd321ced1de06213d2e246b150b4bfd8c4aa0989965dce88f2a58668c64860")}, // hardfork
-                {4232630, uint256S("0xae0c2a9bd13746e2887ca57bf1046b3c787a5ed1068fd1633a3575f08ee291fc")}, // Devfund
-                {4908715, uint256S("0x6f8e37e21aa2fba3f8e2d6825cb825ca290e9367ed08b8c30943bc16efcba119")}, // hardfork
-            }
+            { }
         };
 
         m_assumeutxo_data = {
@@ -187,14 +176,13 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Data from RPC: getchaintxstats 40500 19c385f36869c5b57e17b186414e0dc5d7fa71f24ec3084d03b7736b45e5a3e4
-            .nTime    = 1734468656,
-            .nTxCount = 15786440,
-            .dTxRate  = 0.02988878182907771,
-        };
+                .nTime    = 0,
+                .nTxCount = 0,
+                .dTxRate  = 0.0,
+           };
 
         // A vector of p2sh addresses
-        vDevFundAddress = { "BKDvboD1CzZ5KycP1FRSXRoi7XXhHoQhS1" };
+        vDevFundAddress = { "Lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" };
     }
 };
 
@@ -250,11 +238,11 @@ public:
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000005e076ec35dd78945ce"); // block 2139564
         consensus.defaultAssumeValid = uint256S("0xade1c1bd7d6b75cd95b5ec841ffaff24f79ab71c084a3fe8374c2680c72f6b4e"); // block 2139564
 
-        pchMessageStart[0] = 0xcd;
-        pchMessageStart[1] = 0xf2;
-        pchMessageStart[2] = 0xc0;
-        pchMessageStart[3] = 0xef;
-        nDefaultPort = 25714;
+        pchMessageStart[0] = 0xfc;
+        pchMessageStart[1] = 0xc1;
+        pchMessageStart[2] = 0xb7;
+        pchMessageStart[3] = 0xdc;
+        nDefaultPort = 13334;  // LiteNet testnet port
         m_assumed_blockchain_size = 5;
 
         genesis = CreateGenesisBlock(1393221600, 216178, 0x1f00ffff, 1, 0);
@@ -267,18 +255,15 @@ public:
         // This is fine at runtime as we'll fall back to using them as an addrfetch if they don't support the
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
-        vSeeds.emplace_back("electrum2.blackcoin.nl"); // hosted by blackcoin.nl
-        vSeeds.emplace_back("electrum3.blackcoin.nl");  // hosted by blackcoin.nl
-        vSeeds.emplace_back("dnsseed.blackcoin.nl"); // hosted by blackcoin.nl
-        vSeeds.emplace_back("dnsseed2.blackcoin.nl"); // hosted by blackcoin.nl
-
+        vSeeds.emplace_back("seed-testnet.litenet.asbnetwork.my.id"); // seed-testnet.litenet.asbnetwork.my.id
+        
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        bech32_hrp = "tblk";
+        bech32_hrp = "tltn"; // testnet LiteNet → tltn1...
 
         vFixedSeeds = std::vector<uint8_t>(std::begin(chainparams_seed_test), std::end(chainparams_seed_test));
 
@@ -287,10 +272,6 @@ public:
 
         checkpointData = {
             {
-                {  90235, uint256S("0x567898e79184dc2f7dc3a661f794f28566e4b856d70180914f7371b1b3cc82d8")}, // initial checkpoint
-                {1320664, uint256S("0x64fa6a5414c6797629d34ef150c46486a5e1d49d2bceb87d6da14a501f838afd")}, // hardfork
-                {1415393, uint256S("0x5d5c42500cc6057533e249ba9eeb9b5e998aff30468c904bc267ec9bccbc8b39")}, // start devfund
-                {2070000, uint256S("0xf8e2c3919353487f73cd957f29654dc00a3b0c99a9fbf38a3514cdead626f0ec")}, // segwit activated
             }
         };
 
@@ -299,14 +280,13 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Data from RPC: getchaintxstats 40500 ade1c1bd7d6b75cd95b5ec841ffaff24f79ab71c084a3fe8374c2680c72f6b4e
-            .nTime    = 1734469040,
-            .nTxCount = 4298002,
-            .dTxRate  = 0.02974604428985235,
+                .nTime    = 0,
+                .nTxCount = 0,
+                .dTxRate  = 0.0,
         };
 
         // A vector of p2sh addresses
-        vDevFundAddress = { "n14L5xqAs7QRzNiTLPNaPeqaF9CRoxzVnU" };
+        vDevFundAddress = { "Tmxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" };
     }
 };
 
@@ -402,7 +382,7 @@ public:
         uint256 hash = h.GetHash();
         std::copy_n(hash.begin(), 4, pchMessageStart.begin());
 
-        nDefaultPort = 45714;
+        nDefaultPort = 13336; // LiteNet signet port
 
         genesis = CreateGenesisBlock(1393221600, 216178, 0x1f00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
@@ -413,13 +393,14 @@ public:
 
         m_assumeutxo_data = {};
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);   // S
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1,239);
+
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        bech32_hrp = "tblk";
+        bech32_hrp = "sltn"; // Signet LiteNet → sltn1...
 
         fDefaultConsistencyChecks = false;
         m_is_mockable_chain = false;
@@ -483,11 +464,11 @@ public:
         consensus.nMinimumChainWork = uint256{};
         consensus.defaultAssumeValid = uint256{};
 
-        pchMessageStart[0] = 0x70;
-        pchMessageStart[1] = 0x35;
-        pchMessageStart[2] = 0x22;
-        pchMessageStart[3] = 0x06;
-        nDefaultPort = 35714;
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xce;
+        pchMessageStart[2] = 0xb0;
+        pchMessageStart[3] = 0x0c;
+        nDefaultPort = 13335; // LiteNet regtest port
         m_assumed_blockchain_size = 0;
 
         for (const auto& [dep, height] : opts.activation_heights) {
@@ -555,7 +536,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        bech32_hrp = "blrt";
+        bech32_hrp = "lrtr"; // LiteNet regtest → lrtr1...
 
         vDevFundAddress = {};
     }
