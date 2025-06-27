@@ -91,20 +91,22 @@ std::string CopyrightHolders(const std::string& strPrefix)
 
     std::string strCopyrightHolders =
         strPrefix + "The Bitcoin Core developers" +
-        "\n" + strPrefix + "The Blackcoin developers" +
-        "\n" + strPrefix + "The Blackcoin More developers";
+        "\n" + strPrefix + "LiteNet Core developers" +
+        "\n" + strPrefix + "TLiteNet Core More developers";
     return strCopyrightHolders;
 }
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/CoinBlack/blackcoin-more>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/tempatbloger/litenet/>";
 
     return strprintf(_("Copyright (C) 2009-%i The Bitcoin Core Developers").translated, COPYRIGHT_YEAR) +
            "\n" +
            strprintf(_("Copyright (C) 2014-%i The Blackcoin Developers").translated, 2018) +
            "\n" +
            strprintf(_("Copyright (C) 2018-%i The Blackcoin More Developers").translated, COPYRIGHT_YEAR) +
+           "\n" +
+           strprintf(_("Copyright (C) 2025-%i The LiteNet Core Developers").translated, COPYRIGHT_YEAR) +
            "\n" +
            "\n" +
            strprintf(_("Please contribute if you find %s useful. "
